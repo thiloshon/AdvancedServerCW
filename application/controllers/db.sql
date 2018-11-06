@@ -6,6 +6,32 @@ CREATE TABLE Libooks (ID INTEGER PRIMARY KEY AUTO_INCREMENT,
 					CopiesHeld INTEGER,
 					CopiesOut INTEGER);
 
+					CREATE TABLE Categories (genreID VARCHAR(50) PRIMARY KEY,
+                    					Title VARCHAR(150)             )       			;
+
+
+CREATE TABLE SESSION (Session_id VARCHAR(50) NOT NULL, date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, book_id INTEGER);
+
+
+
+INSERT INTO Categories (genreID, Title) VALUES ('horror', 'Horror');
+INSERT INTO Categories (genreID, Title) VALUES ('romance', 'Romance');
+INSERT INTO Categories (genreID, Title) VALUES ('drama', 'Drama');
+INSERT INTO Categories (genreID, Title) VALUES ('mystery', 'Mystery');
+INSERT INTO Categories (genreID, Title) VALUES ('health', 'Health');
+INSERT INTO Categories (genreID, Title) VALUES ('sci-fi', 'Sci-Fi');
+INSERT INTO Categories (genreID, Title) VALUES ('cookbook', 'Cook Books');
+INSERT INTO Categories (genreID, Title) VALUES ('action', 'Action');
+
+SELECT c.book_id, COUNT(*)
+FROM `session` a
+JOIN `session` b ON a.book_id=b.book_id
+JOIN `session` c ON b.Session_id=c.Session_id
+WHERE a.`book_id`=3 AND c.book_id!=3
+GROUP BY c.book_id
+ORDER BY 2 DESC;
+
+
 
 
 INSERT INTO Libooks (Title, Publisher, Band, Genre, CopiesHeld, CopiesOut) VALUES ('Abolish the Monarchy?', 'Literacy Land info tr', 'Brown', 'horror', 1, 0);
