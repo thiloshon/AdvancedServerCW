@@ -14,6 +14,9 @@ class Cart extends CI_Controller {
      */
     public function index()
     {
-        $this->load->view('shopping_cart');
+
+    	$data['cart_items'] = $this->session->cart_items;
+
+        $this->load->view('shopping_cart', $data);
     }
 }
