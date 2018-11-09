@@ -50,22 +50,41 @@
 		<br>
 
 		<div class="col-sm-9">
-			<div class="well">
-				<h4>Dashboard</h4>
-				<p>Some text..</p>
-			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="well">
-						<h4>Users</h4>
-						<p>1 Million</p>
+			<form action="">
+				<div class="form-group">
+					<label for="keyword">Name of Title or Author</label>
+					<input type="text" class="form-control form-control-lg" id="keyword" name="keyword" aria-describedby="emailHelp" placeholder="Enter a keyword to search">
+
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+			<?php foreach ($results as $result): ?>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="well">
+							<p><a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Admin/view_book?book_id=" . $result['ID'] ?>"><?php echo $result['Title'] ?>
+								</a>
+							</p>
+							<img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+						</div>
+					</div>
+					<div class="col-sm-9">
+						<div class="well">
+							<p>Just Forgot that I had to mention something about someone to someone about how I forgot
+								something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+						</div>
 					</div>
 				</div>
 
-			</div>
 
+			<?php endforeach; ?>
 
 		</div>
+
+
 	</div>
 </div>
 

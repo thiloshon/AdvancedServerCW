@@ -50,22 +50,48 @@
 		<br>
 
 		<div class="col-sm-9">
-			<div class="well">
-				<h4>Dashboard</h4>
-				<p>Some text..</p>
-			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="well">
-						<h4>Users</h4>
-						<p>1 Million</p>
+			<form action="">
+				<div class="form-group">
+					<h4>Add A New Book</h4>
+
+					<label for="book_name">Name of the book</label>
+					<input type="text" class="form-control form-control-lg" id="book_name" name="book_name" placeholder="Enter Name of New Book">
+
+					<br/>
+
+
+					<div class="form-group">
+						<label for="category">Category</label>
+						<select class="form-control" id="category" name="category">
+							<?php foreach ($categories as $category): ?>
+
+								<option value="<?php echo $category['genreID'] ?>"> <?php echo $category['Title'] ?> </option>
+							<?php endforeach; ?>
+
+						</select>
 					</div>
+
+
+					<label for="author">Author</label>
+					<input type="text" class="form-control form-control-lg" id="author" name="author" placeholder="Enter a Author Name">
+
+					<br/>
+
+					<label for="publisher">Publisher</label>
+					<input type="text" class="form-control form-control-lg" id="publisher" name="publisher" placeholder="Enter Publisher Name">
+
+					<br/>
+
+					<label for="copies">Copies in Stock</label>
+					<input type="text" class="form-control form-control-lg" id="copies" name="copies" placeholder="Enter Copies left in stock">
+
 				</div>
 
-			</div>
-
-
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
 		</div>
+
+
 	</div>
 </div>
 
