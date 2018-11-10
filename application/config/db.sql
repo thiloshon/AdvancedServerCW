@@ -40,6 +40,17 @@ GROUP BY c.book_id
 ORDER BY COUNT(*) DESC);
 
 
+SELECT * FROM Libooks WHERE ID IN ();
+
+SELECT c.book_id
+FROM book_views a
+	JOIN book_views b ON a.book_id=b.book_id
+	JOIN book_views c ON b.user_id=c.user_id
+WHERE a.`book_id`=3 AND c.book_id!=3
+GROUP BY c.book_id
+ORDER BY COUNT(*) DESC;
+
+
 
 
 

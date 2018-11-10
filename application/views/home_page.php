@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 
 							<div class="panel-footer">
-								<a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Product?book_id=" . $book['ID'] ?>"><?php echo $book['Title'] ?></a>
+								<a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Product?book_id=" . $book->isbn ?>"><?php echo $book->title ?></a>
 							</div>
 
 						</div>
@@ -106,52 +106,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php endforeach; ?>
 
 
-		</div>
-		<div class="col-sm-12">
-			<div class="panel panel-danger panel-body">
-				<div class="panel-heading">Most Viewed Academic Books</div>
-
-				<div class="col-sm-4">
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-												 style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-												 style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-												 style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-
-
-			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="panel panel-success panel-body">
-				<div class="panel-heading">Popular Sci-Fi</div>
-
-				<div class="col-sm-4">
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-												 style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-												 style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-												 style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-
-
-			</div>
 		</div>
 	</div>
 </div>

@@ -8,24 +8,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$data['books'] = $this->Book_model->get_all_books_as_categories();
 
-        $res = $this->db->get('Libooks');
-
-        // foreach ($query->result('User') as $user) direct to model
-
-        $rs['books'] = $res->result_array();
-        $res->free_result();
-
-
-        $categories = array();
-
-		foreach($rs['books'] as $book)
-		{
-			$categories[$book['Genre']][] = $book;
-		}
-
-		$ans['books'] = $categories;
-
-		$this->load->view('home_page', $ans);
+		$this->load->view('home_page', $data);
 	}
 }

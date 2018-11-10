@@ -17,29 +17,6 @@
 <html>
 <body>
 <div class="container">
-	<?php
-
-	$added = false;
-
-	if (!(is_null($this->input->get('quantity')))) {
-
-		$newdata = array(
-			'book_id' => $book['ID'],
-			'qty' => $this->input->get('quantity'),
-			'book_name' => $book['Title']
-
-		);
-
-		$temp = $this->session->cart_items;
-		$temp[$book['ID']] = $newdata;
-
-		$this->session->set_userdata('cart_items', $temp);
-
-		$added = true;
-		print_r($this->session->cart_items);
-	}
-
-	?>
 
 	<div class="row">
 		<div class="col-xs-4 item-photo">
@@ -48,22 +25,22 @@
 		</div>
 		<div class="col-xs-5" style="border:0px solid gray">
 			<!-- Datos del vendedor y titulo del producto -->
-			<h3><?php echo $book['Title'] ?></h3>
-			<h5 style="color:#337ab7">written by <a href="#"><?php echo $book['Publisher'] ?></a> ·
-				<small style="color:#337ab7">(<?php echo $book['CopiesHeld'] ?> copies left)</small>
+			<h3><?php echo $book->title ?></h3>
+			<h5 style="color:#337ab7">written by <a href="#"><?php echo $book->publisher ?></a> ·
+				<small style="color:#337ab7">(<?php echo $book->copies_held ?> copies left)</small>
 			</h5>
-			<h5 style="color:#337ab7">in category <a href="#"><?php echo $book['Genre'] ?></a>
+			<h5 style="color:#337ab7">in category <a href="#"><?php echo $book->category ?></a>
 
 				<!-- Precios -->
 				<h6 class="title-price">
 					<small>Price:</small>
 				</h6>
-				<h3 style="margin-top:0px;">U$S 399</h3>
+				<h3 style="margin-top:0px;">U$S <?php echo $book->price ?></h3>
 
 				<!-- Detalles especificos del producto -->
 				<div class="section">
 					<h6 class="title-attr" style="margin-top:15px;">
-						<small>Sold: <?php echo $book['CopiesOut'] ?></small>
+						<small>Sold: <?php echo $book->copies_out ?></small>
 					</h6>
 					<div>
 						<div class="attr" style="width:25px;background:#5a5a5a;"></div>
@@ -75,11 +52,11 @@
 						<small>Paper back color:</small>
 					</h6>
 					<div>
-						<div class="attr2"><?php echo $book['Band'] ?></div>
+						<div class="attr2"><?php echo $book->band ?></div>
 					</div>
 				</div>
 				<form action="" method="get">
-					<input type="hidden" name="book_id" value="<?php echo $book['ID'] ?>">
+					<input type="hidden" name="book_id" value="<?php echo $book->isbn ?>">
 					<div class="section" style="padding-bottom:20px;">
 						<h6 class="title-attr">
 							<small>Choose Qty</small>

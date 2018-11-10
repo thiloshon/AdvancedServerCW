@@ -15,40 +15,30 @@ class Product extends CI_Controller
 	 */
 	public function index()
 	{
+		$rs = array();
 
-		$session_id = session_id();
-		$book_id = $this->input->get('book_id');
+		if (!is_null($this->input->get('book_id'))) {
 
-		$this->db->where('ID', $book_id);
-		$res = $this->db->get('Libooks');
+			$book_id = $this->input->get('book_id');
+			$book = $this->Book_model->get_book_by_id($book_id);
 
-		$rs['book'] = $res->result_array()[0];
-		$res->free_result();
+			$this->collaborative_filter_library->add_book_view($book_id);
+			$related_books = $this->collaborative_filter_library->get_related_books($book_id);
 
-		$data = array(
-			'Session_id' => $session_id,
-			'book_id' => $book_id
-		);
-
-		$this->db->insert('session', $data);
+			$rs['book'] = $book;
+			$rs['also_viewed'] = $related_books;
 
 
-		$query = 'SELECT * FROM Libooks WHERE ID IN (SELECT c.book_id 
-FROM `session` a
-JOIN `session` b ON a.book_id=b.book_id
-JOIN `session` c ON b.Session_id=c.Session_id
-WHERE a.`book_id`=' . $book_id . ' AND c.book_id!=' . $book_id . ' GROUP BY c.book_id
-ORDER BY COUNT(*) DESC)';
+			if (!is_null($this->input->get('quantity'))) {
+				$book_quantity = $this->input->get('quantity');
 
-		$also_viewed = $this->db->query($query);
-		$rs['also_viewed'] = $also_viewed->result_array();
+				$this->cart_library->add_book_to_cart($book->isbn, $book_quantity, $book->title);
+			}
 
+			$this->load->view('product_page', $rs);
 
-		if (!($this->session->has_userdata('cart_items'))){
-			$cart_items = array('cart_items' => array());
-			$this->session->set_userdata($cart_items);
+		} else {
+			echo 'choose book';
 		}
-
-		$this->load->view('product_page', $rs);
 	}
 }

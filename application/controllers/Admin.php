@@ -12,58 +12,50 @@ class Admin extends CI_Controller
 	{
 		if (!is_null($this->input->post('name'))) {
 			$this->load->view('admin_login');
+
 		} else{
 			$this->load->view('admin_category');
 		}
 	}
 
 
-	public function category()
+	public function new_category()
 	{
-
 		if (is_null($this->input->get('newCategory'))) {
 			$this->load->view('admin_category');
 
 		} else{
-			$data = array(
-				'genreID' =>  $this->input->get('newCategoryID'),
-				'Title' => $this->input->get('newCategory')
-			);
+			$id = $this->input->get('newCategoryID');
+			$name = $this->input->get('newCategory');
 
-			$this->db->insert('categories', $data);
+			$this->Category_model->add_a_new_category($id, $name);
 
 			redirect('/admin/category', 'refresh');
-
-			$this->load->view('admin_category');
 		}
 	}
 
 
-
-	public function book()
+	public function new_book()
 	{
 		if (is_null($this->input->get('book_name'))) {
 
-			$categories = $this->db->get('Categories');
-			$rs['categories'] = $categories->result_array();
+			// For listing available categories to choose from
+			$data['categories'] = $this->Category_model->get_all_categories();
 
-			$this->load->view('admin_book', $rs);
-
+			$this->load->view('admin_book', $data);
 		} else{
 
-			$data = array(
-				'Title' => $this->input->get('book_name'),
-				'Publisher' => $this->input->get('publisher'),
-				'Band' => "Brown",
-				'Genre' => $this->input->get('category'),
-				'CopiesHeld' => $this->input->get('copies'),
-				'CopiesOut' => 0
-			);
+			$title = $this->input->get('book_name');
+			$author = $this->input->get('author');
+			$publisher = $this->input->get('publisher');
+			$category = $this->input->get('category');
+			$price = $this->input->get('price');
+			$isbn = $this->input->get('isbn');
+			$copies_held = $this->input->get('copies');
 
-			$this->db->insert('libooks', $data);
+			$this->Book_model->add_a_new_book($title, $author, $publisher, $category, $price, $isbn, $copies_held);
 
 			redirect('/admin/book', 'refresh');
-
 		}
 	}
 
@@ -77,16 +69,9 @@ class Admin extends CI_Controller
 			$this->load->view('admin_search', array("results" => array()));
 
 		} else{
-
-			$this->db->like('Title', $searchKeyword);
-			$this->db->or_like('Publisher', $searchKeyword);
-
-			$res = $this->db->get('libooks');
-
-			$rs['results'] = $res->result_array();
+			$rs['results'] = $this->Book_model->search_for_a_book($searchKeyword);
 
 			$this->load->view('admin_search', $rs);
-
 		}
 
 	}

@@ -14,20 +14,12 @@ class Categories extends CI_Controller {
      */
     public function index()
     {
-    	$category = $this->input->get('category_id');
+		$category_id = $this->input->get('category_id');
 
-		$this->db->where('Genre', $category);
-		$res = $this->db->get('Libooks');
+		$data['category'] = $category_id;
+		$data['categories'] = $this->Category_model->get_all_categories();
+		$data['books'] = $this->Book_model->get_books_by_category($category_id);
 
-		$categories = $this->db->get('Categories');
-
-		$rs['books'] = $res->result_array();
-		$rs['category'] = $category;
-		$rs['categories'] = $categories->result_array();
-
-
-		$res->free_result();
-
-        $this->load->view('categories_page', $rs);
+        $this->load->view('categories_page', $data);
     }
 }

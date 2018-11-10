@@ -89,7 +89,7 @@
 
 			<?php foreach ($categories as $book): ?>
 				<p>
-					<a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Categories?category_id=" . $book['genreID'] ?>"><?php echo $book['Title'] ?>
+					<a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Categories?category_id=" . $book->category_id ?>"><?php echo $book->category_name ?>
 					</a>
 				</p>
 			<?php endforeach; ?>
@@ -108,7 +108,7 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="well">
-							<p><a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Product?book_id=" . $book['ID'] ?>"><?php echo $book['Title'] ?>
+							<p><a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Product?book_id=" . $book->isbn ?>"><?php echo $book->title ?>
 								</a>
 							</p>
 							<img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">

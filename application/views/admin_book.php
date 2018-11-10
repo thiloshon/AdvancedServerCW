@@ -65,7 +65,7 @@
 						<select class="form-control" id="category" name="category">
 							<?php foreach ($categories as $category): ?>
 
-								<option value="<?php echo $category['genreID'] ?>"> <?php echo $category['Title'] ?> </option>
+								<option value="<?php echo $category->category_id ?>"> <?php echo $category->category_name ?> </option>
 							<?php endforeach; ?>
 
 						</select>
@@ -79,6 +79,16 @@
 
 					<label for="publisher">Publisher</label>
 					<input type="text" class="form-control form-control-lg" id="publisher" name="publisher" placeholder="Enter Publisher Name">
+
+					<br/>
+
+					<label for="price">Price</label>
+					<input type="text" class="form-control form-control-lg" id="price" name="price" placeholder="Enter Unit Price">
+
+					<br/>
+
+					<label for="isbn">ISBN</label>
+					<input type="text" class="form-control form-control-lg" id="isbn" name="isbn" placeholder="Enter ISBN Number">
 
 					<br/>
 

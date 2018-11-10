@@ -65,7 +65,8 @@
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="well">
-							<p><a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Admin/view_book?book_id=" . $result['ID'] ?>"><?php echo $result['Title'] ?>
+							<p><a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Admin/view_book?book_id=" . $result->isbn ?>">
+									<?php echo $result->title ?>
 								</a>
 							</p>
 							<img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
