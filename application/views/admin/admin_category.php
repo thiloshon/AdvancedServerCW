@@ -1,4 +1,5 @@
-<div class="col-sm-9">
+<div class="col-sm-6">
+	<h4>Add A New Category</h4>
 	<form action="">
 		<div class="form-group">
 			<label for="newCategory">Name For New Category</label>

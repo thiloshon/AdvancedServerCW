@@ -1,4 +1,4 @@
-<div class="col-sm-9">
+<div class="col-sm-6">
 	<form action="">
 		<div class="form-group">
 			<h4>Add A New Book</h4>

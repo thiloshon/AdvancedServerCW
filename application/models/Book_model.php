@@ -17,6 +17,7 @@ class Book_model extends CI_Model
 	public $band;
 	public $copies_held;
 	public $copies_out;
+	public $image_url;
 
 	public function add_a_new_book($title, $author, $publisher, $category, $price, $isbn, $copies_held)
 	{

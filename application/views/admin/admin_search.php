@@ -1,4 +1,5 @@
-<div class="col-sm-9">
+<div class="col-sm-6">
+	<h4>Search for a Book</h4>
 	<form action="">
 		<div class="form-group">
 			<label for="keyword">Name of Title or Author</label>

@@ -10,14 +10,26 @@ class Admin extends CI_Controller
 {
 	public function index()
 	{
-		if (is_null($this->input->post('name'))) {
+		if (isset($this->session->admin_logged_in) & $this->session->admin_logged_in){
 			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
-			$this->load->view('admin_login');
-
+			$this->load->view('admin/admin_category');
 		} else {
 			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
-			$this->load->view('admin_category');
+			$this->load->view('admin/admin_login');
 		}
+	}
+
+	public function login(){
+		if (!is_null($this->input->post('name'))) {
+			$id = $this->input->post('name');
+			$pw = $this->input->post('password');
+
+			if ($id == 'admin' && $pw == 'admin'){
+				$this->session->set_userdata('admin_logged_in', true);
+			}
+		}
+
+		redirect('/admin', 'refresh');
 	}
 
 
@@ -25,7 +37,7 @@ class Admin extends CI_Controller
 	{
 		if (is_null($this->input->get('newCategory'))) {
 			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
-			$this->load->view('admin_category');
+			$this->load->view('admin/admin_category');
 
 		} else {
 			$id = $this->input->get('newCategoryID');
@@ -46,7 +58,7 @@ class Admin extends CI_Controller
 			$data['categories'] = $this->Category_model->get_all_categories();
 
 			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
-			$this->load->view('admin_book', $data);
+			$this->load->view('admin/admin_book', $data);
 
 		} else {
 
@@ -70,14 +82,13 @@ class Admin extends CI_Controller
 		$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 
 		if ($searchKeyword == "" | is_null($searchKeyword)) {
-			$this->load->view('admin_search', array("results" => array()));
+			$this->load->view('admin/admin_search', array("results" => array()));
 
 		} else {
 			$rs['results'] = $this->Book_model->search_for_a_book($searchKeyword);
 
-			$this->load->view('admin_search', $rs);
+			$this->load->view('admin/admin_search', $rs);
 		}
-
 	}
 
 	public function view_book()
@@ -87,9 +98,6 @@ class Admin extends CI_Controller
 
 		$rs['book_id'] = $book_id;
 
-		$this->load->view('admin_book_view', $rs);
-
-
+		$this->load->view('admin/admin_book_view', $rs);
 	}
-
 }

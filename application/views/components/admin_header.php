@@ -22,28 +22,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+	<style>
+		p{
+			margin-top: 10px;
+		}
+	</style>
+
+
+
 </head>
 
+<?php
+
+
+if (!isset($this->session->admin_logged_in) & !($this->session->admin_logged_in)) {
+	?>
+	<style type="text/css">#admin_nav{
+			display:none;
+		}</style>
+	<?php
+}
+?>
 
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 	<div class="container">
 		<a class="navbar-brand" href="<?php echo base_url(); ?>Admin">The Bookery! Admin Panel</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-				aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 
-		<div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-			<ul class="navbar-nav m-auto">
-				<li class="nav-item m-auto">
-					<a class="nav-link" href=""><p>Dear!</p></a>
-				</li>
-
-			</ul>
-
-
-		</div>
+		<p class="text-info">Dear Admin!</p>
 	</div>
 </nav>
 <section class="jumbotron text-center">
@@ -54,13 +60,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container-fluid">
 	<div class="row content">
-		<div class="col-sm-3 sidenav hidden-xs">
-			<h2>Admin Portal</h2>
-			<ul class="nav nav-pills nav-stacked">
-				<li class="active"><a href="<?php echo base_url(); ?>Admin">Add Category</a></li>
-				<li><a href="<?php echo base_url(); ?>Admin/new_book">Add Book</a></li><br/>
-				<li><a href="<?php echo base_url(); ?>Admin/search">Search Book</a></li><br/>
-				<!--<li><a href="http://localhost/AdvancedServerCW/index.php/Admin/view">Add Category</a></li>-->
-			</ul><br>
+
+		<div class="col-sm-2" id="admin_nav">
+			<h3>Settings</h3>
+			<nav class="nav flex-column nav-pills nav-fill">
+				<a class="nav-link " href="<?php echo base_url(); ?>Admin">Add Category</a>
+				<a class="nav-link" href="<?php echo base_url(); ?>Admin/new_book">Add Book</a>
+				<a class="nav-link" href="<?php echo base_url(); ?>Admin/search">Search Book</a>
+			</nav>
+
 		</div>
 		<br>

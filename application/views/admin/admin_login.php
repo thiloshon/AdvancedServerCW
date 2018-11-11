@@ -1,8 +1,8 @@
 <div class="container">
-	<div class="row main">
+
 
 		<div class="main-login main-center">
-			<form class="form-horizontal" method="post" action="">
+			<form class="form-horizontal" method="post" action="<?php echo site_url('Admin/login') ?>">
 
 				<div class="form-group">
 					<label for="name" class="cols-sm-2 control-label">Admin ID</label>
@@ -29,5 +29,5 @@
 					</div>
 				</form>
 		</div>
-	</div>
+
 </div>

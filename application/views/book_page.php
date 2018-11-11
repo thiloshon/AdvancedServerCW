@@ -7,6 +7,11 @@
 		margin-bottom: 1rem;
 		border: 0px solid transparent;
 		border-radius: .25rem;
+	}
+
+	.book_image{
+		max-width:100%;
+	}
 </style>
 
 
@@ -19,17 +24,16 @@
 	</div>
 
 	<div class="row">
-		<div class="col-xs-4 item-photo">
-			<img style="max-width:100%;"
-				 src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg"/>
+		<div class="col-sm-4 item-photo">
+			<img class="img-responsive book_image" src="<?php echo base_url().$book->image_url ?>"/>
 		</div>
-		<div class="col-xs-5" style="border:0px solid gray">
+		<div class="col-sm-8" style="border:0px solid gray">
 			<!-- Datos del vendedor y titulo del producto -->
 			<h3><?php echo $book->title ?></h3>
-			<h5 style="color:#337ab7">written by <a href="#"><?php echo $book->publisher ?></a> ·
+			<h5 style="color:#bfbfbf">written by <span style="color:#525252"><?php echo $book->author ?></span> ·
 				<small style="color:#337ab7">(<?php echo $book->copies_held ?> copies left)</small>
 			</h5>
-			<h5 style="color:#337ab7">in category <a href="<?php echo site_url(array('Categories', $book->category)) ?>"><?php echo $book->category ?></a>
+			<h5 style="color:#bfbfbf">in category <a href="<?php echo site_url(array('Categories', $book->category)) ?>"><?php echo $this->Category_model->get_category_name($book->category) ?></a>
 
 				<!-- Precios -->
 				<h6 class="title-price">
@@ -64,9 +68,7 @@
 							<small>Choose Qty</small>
 						</h6>
 						<div>
-							<div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
 							<input type="text" value="1" name="quantity"/>
-							<div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
 						</div>
 					</div>
 
@@ -75,16 +77,18 @@
 
 						<button class="btn btn-success" type="submit">
 
-							<span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart"
-								  aria-hidden="true"></span>Add to Cart
+							<span
+							<i class="fa fa-shopping-cart"> Add to Cart </i> </span>
 						</button>
 					</div>
 
 				<?php echo form_close(); ?>
 		</div>
 
+		<br/>
+
 		<div class="col-xs-9">
-			<div style="width:100%;border-top:1px solid silver">
+			<div style="margin-top:5%;width:100%;border-top:1px solid silver">
 				<p style="padding:15px;">
 					<small>
 						Stay connected either on the phone or the Web with the Galaxy S4 I337 from Samsung. With 16 GB

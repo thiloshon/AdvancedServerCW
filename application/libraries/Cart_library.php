@@ -13,7 +13,7 @@ class Cart_library
 		$this->ci = &get_instance();
 	}
 
-	public function add_book_to_cart($book_id, $quantity, $title, $price)
+	public function add_book_to_cart($book_id, $quantity, $title, $price, $url)
 	{
 		$this->initiate_cart();
 
@@ -21,7 +21,8 @@ class Cart_library
 			'book_id' => $book_id,
 			'qty' => $quantity,
 			'book_name' => $title,
-			'price' => $price
+			'price' => $price,
+			'url' => $url
 		);
 
 		$temp = $this->get_cart_items();

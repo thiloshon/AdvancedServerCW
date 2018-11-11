@@ -26,7 +26,7 @@
 								<div class="col-sm-3">
 									<div class="card">
 										<img class="card-img-top img-responsive"
-											 src="https://placehold.it/150x80?text=IMAGE"
+											 src="<?php echo $book->image_url ?>"
 											 alt="Card image cap">
 										<div class="card-body">
 											<h5 class="card-title"><?php echo $book->title ?></h5>

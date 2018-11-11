@@ -35,7 +35,7 @@ class Books extends CI_Controller
 			if ($this->form_validation->run())
 			{
 				$book_quantity = $this->input->post('quantity');
-				$this->cart_library->add_book_to_cart($book->isbn, $book_quantity, $book->title, $book->price);
+				$this->cart_library->add_book_to_cart($book->isbn, $book_quantity, $book->title, $book->price, $book->image_url);
 
 				$rs['success_message'] = "Item was added to your cart";
 			}
