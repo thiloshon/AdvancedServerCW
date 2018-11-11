@@ -24,7 +24,7 @@
 								<td><input class="form-control" type="text" name="new_qty"
 										   value="<?php echo $cart_item['qty'] ?>"/></td>
 
-								<td class="text-right">124,90 €</td>
+								<td class="text-right"><?php echo $cart_item['price'] *  $cart_item['qty']?> $</td>
 
 								<input type="hidden" name="book_id" value="<?php echo $cart_item['book_id'] ?>"/>
 
@@ -48,7 +48,7 @@
 						<td></td>
 						<td></td>
 						<td>Sub-Total</td>
-						<td class="text-right">255,90 €</td>
+						<td class="text-right"><?php echo $this->cart_library->get_current_amount(); ?> $</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -56,7 +56,7 @@
 						<td></td>
 						<td></td>
 						<td>Shipping</td>
-						<td class="text-right">6,90 €</td>
+						<td class="text-right">6,90 $</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -64,7 +64,7 @@
 						<td></td>
 						<td></td>
 						<td><strong>Total</strong></td>
-						<td class="text-right"><strong>346,90 €</strong></td>
+						<td class="text-right"><strong><?php echo ($this->cart_library->get_current_amount() + 6.90);?> $</strong></td>
 					</tr>
 
 					</tbody>
@@ -74,7 +74,8 @@
 		<div class="col mb-2">
 			<div class="row">
 				<div class="col-sm-12  col-md-6">
-					<button class="btn btn-block btn-light">Continue Shopping</button>
+					<a href="<?php echo site_url('Categories/action') ?>"><button class="btn btn-block btn-light" type="button" >Continue Shopping</button></a>
+
 				</div>
 				<div class="col-sm-12 col-md-6 text-right">
 					<button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>

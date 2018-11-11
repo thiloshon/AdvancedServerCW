@@ -11,7 +11,7 @@ class Book_view_model extends CI_Model
 	public $user_id;
 	public $book_id;
 
-	public function add_book_view($user_id, $book_id)
+	public function add_book_view($book_id, $user_id)
 	{
 		$this->user_id = $user_id;
 		$this->book_id = $book_id;

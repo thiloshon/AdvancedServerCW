@@ -13,14 +13,15 @@ class Cart_library
 		$this->ci = &get_instance();
 	}
 
-	public function add_book_to_cart($book_id, $quantity, $title)
+	public function add_book_to_cart($book_id, $quantity, $title, $price)
 	{
 		$this->initiate_cart();
 
 		$newdata = array(
 			'book_id' => $book_id,
 			'qty' => $quantity,
-			'book_name' => $title
+			'book_name' => $title,
+			'price' => $price
 		);
 
 		$temp = $this->get_cart_items();
@@ -63,4 +64,17 @@ class Cart_library
 		return $this->get_cart_items();
 	}
 
+	public function get_cart_count(){
+		$this->initiate_cart();
+		return sizeof($this->ci->session->cart_items);
+	}
+
+	public function get_current_amount(){
+		$sum = 0;
+		foreach($this->get_cart_items() as $key=>$value){
+			if(isset($value['price']))
+				$sum += ($value['price'] * $value['qty']);
+		}
+		return $sum;
+	}
 }

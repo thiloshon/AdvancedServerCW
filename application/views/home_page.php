@@ -1,15 +1,28 @@
+<style>
+	.card-title {
+		min-height: 50px;
+	}
+
+	.card {
+		margin-bottom: 5%;
+	}
+
+</style>
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 ">
-			<?php foreach ($books as $key => $category): ?>
+			<?php $cat = 0; foreach ($books as $key => $category): if ($cat>2) break; ?>
 				<div class="card">
 					<div class="card-header">
-						<?php echo $key ?> <a
-							href="<?php echo base_url() . "Categories/list_categories?category_id=" . $key ?>">Browse More</a>
+						<?php echo $this->Category_model->get_category_name($key) ?> | <a href="<?php echo site_url(array('Categories', $key)) ?>">Browse More</a>
+
 					</div>
 					<div class="card-body">
 						<div class="row">
+							<?php $val = 0; ?>
 							<?php foreach ($category as $book): ?>
+								<?php if ($val>3) break; ?>
 								<div class="col-sm-3">
 									<div class="card">
 										<img class="card-img-top img-responsive"
@@ -17,23 +30,22 @@
 											 alt="Card image cap">
 										<div class="card-body">
 											<h5 class="card-title"><?php echo $book->title ?></h5>
-											<p class="card-text">Some quick example text to build on the card title and
-												make up the bulk of the card's content.</p>
+											<p class="card-text">By <?php echo $book->author ?></p>
 										</div>
 										<ul class="list-group list-group-flush">
 											<li class="list-group-item"> $ <?php echo $book->price ?></li>
 										</ul>
 										<div class="card-body">
-											<a href="<?php echo base_url() . "Product?book_id=" . $book->isbn ?>"
+											<a href="<?php echo site_url(array('Books', $book->isbn)) ?>"
 											   class="card-link">View Book</a>
 										</div>
 									</div>
 								</div>
-							<?php endforeach; ?>
+							<?php $val++; endforeach; ?>
 						</div>
 					</div>
 				</div>
-			<?php endforeach; ?>
+			<?php $cat++; endforeach; ?>
 		</div>
 	</div>
 </div>

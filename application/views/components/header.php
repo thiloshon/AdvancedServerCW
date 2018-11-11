@@ -17,8 +17,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/categories.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/welcome_page.css">
 
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<style>
+		body, html{
+			font-family: 'Nunito Sans', sans-serif;
+		}
+	</style>
 
 </head>
 
@@ -35,32 +43,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
 			<ul class="navbar-nav m-auto">
 				<li class="nav-item m-auto">
-					<a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+					<a class="nav-link" href="<?php echo base_url() ?>">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url(); ?>Categories/list_categories">Categories</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="<?php echo base_url(); ?>Cart">Cart <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="<?php echo site_url('Categories/action')?>">Categories</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url(); ?>Admin">Admin</a>
+					<a class="nav-link" href="<?php echo site_url('Cart')?>">Cart</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo site_url('Admin')?>">Admin</a>
 				</li>
 			</ul>
 
 			<form class="form-inline my-2 my-lg-0">
-				<div class="input-group input-group-sm">
-					<input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-						   placeholder="Search...">
-					<div class="input-group-append">
-						<button type="button" class="btn btn-secondary btn-number">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
-				</div>
-				<a class="btn btn-success btn-sm ml-3" href="cart.html">
+				<a class="btn btn-success btn-sm ml-3" href="<?php echo site_url('Cart')?>">
 					<i class="fa fa-shopping-cart"></i> Cart
-					<span class="badge badge-light">3</span>
+					<span class="badge badge-light"><?php echo $this->cart_library->get_cart_count() ?></span>
 				</a>
 			</form>
 		</div>

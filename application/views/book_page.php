@@ -1,4 +1,23 @@
+
+
+<style>
+	.alert {
+		position: relative;
+		padding: 0rem 1.25rem 0rem 1.25rem;
+		margin-bottom: 1rem;
+		border: 0px solid transparent;
+		border-radius: .25rem;
+</style>
+
+
 <div class="container">
+	<div class="alert alert-success" role="alert">
+		<?php echo $success_message; ?>
+	</div>
+	<div class="alert alert-danger" role="alert">
+		<?php echo validation_errors(); ?>
+	</div>
+
 	<div class="row">
 		<div class="col-xs-4 item-photo">
 			<img style="max-width:100%;"
@@ -10,7 +29,7 @@
 			<h5 style="color:#337ab7">written by <a href="#"><?php echo $book->publisher ?></a> ·
 				<small style="color:#337ab7">(<?php echo $book->copies_held ?> copies left)</small>
 			</h5>
-			<h5 style="color:#337ab7">in category <a href="#"><?php echo $book->category ?></a>
+			<h5 style="color:#337ab7">in category <a href="<?php echo site_url(array('Categories', $book->category)) ?>"><?php echo $book->category ?></a>
 
 				<!-- Precios -->
 				<h6 class="title-price">
@@ -36,7 +55,9 @@
 						<div class="attr2"><?php echo $book->band ?></div>
 					</div>
 				</div>
-				<form action="" method="get">
+
+				<?php echo form_open() ?>
+
 					<input type="hidden" name="book_id" value="<?php echo $book->isbn ?>">
 					<div class="section" style="padding-bottom:20px;">
 						<h6 class="title-attr">
@@ -44,7 +65,7 @@
 						</h6>
 						<div>
 							<div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-							<input value="1" name="quantity"/>
+							<input type="text" value="1" name="quantity"/>
 							<div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
 						</div>
 					</div>
@@ -59,7 +80,7 @@
 						</button>
 					</div>
 
-				</form>
+				<?php echo form_close(); ?>
 		</div>
 
 		<div class="col-xs-9">
@@ -106,22 +127,33 @@
 
 	<div class="row">
 		<div class="col-sm-12 ">
-			<div class="panel panel-primary panel-body">
-				<div class="panel-heading">
-					<p>Viewers also viewed...</p>
+
+			<div class="card">
+				<div class="card-header">
+					Viewers also viewed...
 				</div>
-				<?php foreach ($also_viewed as $book): ?>
-					<div class="col-sm-4">
-						<div class="panel-body">
-							<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-								 style="width:100%" alt="Image">
-						</div>
-						<div class="panel-footer">
-							<a href="<?php echo base_url() . "Product?book_id=" . $book['ID'] ?>"><?php echo $book['Title'] ?></a>
-						</div>
+				<div class="card-body">
+					<div class="row">
+						<?php $val = 0; ?>
+						<?php foreach ($also_viewed as $book): ?>
+							<?php if ($val>4) break; ?>
+							<div class="col-sm-3">
+								<div class="card">
+									<img class="card-img-top img-responsive"
+										 src="https://placehold.it/150x80?text=IMAGE"
+										 alt="Card image cap">
+									<div class="card-body">
+										<a href="<?php echo site_url(array('Books', $book->isbn)) ?>"><?php echo $book->title ?></a>
+									</div>
+								</div>
+							</div>
+							<?php $val++; endforeach; ?>
 					</div>
-				<?php endforeach; ?>
+				</div>
 			</div>
+
+
+
 		</div>
 	</div>
 </div>

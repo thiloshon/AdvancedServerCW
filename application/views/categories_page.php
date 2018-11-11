@@ -4,7 +4,7 @@
 
 			<?php foreach ($categories as $book): ?>
 				<p>
-					<a href="<?php echo base_url() . "Categories/list_categories?category_id=" . $book->category_id ?>"><?php echo $book->category_name ?>
+					<a href="<?php echo site_url(array('Categories', $book->category_id)) ?>"><?php echo $book->category_name ?>
 					</a>
 				</p>
 			<?php endforeach; ?>
@@ -12,13 +12,13 @@
 		</div>
 
 		<div class="col-sm-8 text-left">
-			<h1><?php echo $category ?></h1>
+			<h1><?php echo $this->Category_model->get_category_name($category) ?></h1>
 
 			<?php foreach ($books as $book): ?>
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="well">
-							<p><a href="<?php echo base_url() . "Product?book_id=" . $book->isbn ?>"><?php echo $book->title ?>
+							<p><a href="<?php echo site_url(array('Books', $book->isbn)) ?>"><?php echo $book->title ?>
 								</a>
 							</p>
 							<img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">

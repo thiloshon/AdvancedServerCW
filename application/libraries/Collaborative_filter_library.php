@@ -16,7 +16,6 @@ class Collaborative_filter_library
 
 	public function add_book_view($book_id)
 	{
-
 		if (!($this->ci->session->has_userdata('user_uid'))) {
 			$user_id = uniqid('', true);
 			$this->ci->session->set_userdata('user_uid', $user_id);
