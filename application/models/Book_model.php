@@ -59,14 +59,23 @@ class Book_model extends CI_Model
 		return $res->custom_row_object(0, 'Book_model');
 	}
 
-	public function get_books_by_category($category_id)
+	public function get_books_by_category($category_id, $limit, $start)
 	{
+		$this->db->limit($limit, $start);
 		$this->db->where('category', $category_id);
 		$res = $this->db->get('library_books');
 
 		//$res->free_result(); for performance
 
 		return $res->custom_result_object('Book_model');
+	}
+
+	public function count_by_category($category_id) {
+		$this->db->where('category', $category_id);
+		$this->db->from("library_books");
+
+		return $this->db->count_all_results();
+
 	}
 
 	public function search_for_a_book($keyword)

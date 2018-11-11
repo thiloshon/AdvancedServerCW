@@ -23,7 +23,7 @@ class Cart_library
 			'book_name' => $title
 		);
 
-		$temp = $this->ci->session->cart_items;
+		$temp = $this->get_cart_items();
 		$temp[$book_id] = $newdata;
 
 		$this->ci->session->set_userdata('cart_items', $temp);
@@ -39,8 +39,28 @@ class Cart_library
 
 	public function get_cart_items()
 	{
+		$this->initiate_cart();
 		return $this->ci->session->cart_items;
 	}
 
+	public function update_cart_item($book_id, $quantity)
+	{
+		$items = $this->get_cart_items();
+
+		$items[$book_id]['qty'] = $quantity;
+		$this->ci->session->set_userdata('cart_items', $items);
+
+		return $this->get_cart_items();
+	}
+
+	public function delete_cart_item($book_id)	{
+		$items = $this->get_cart_items();
+
+		unset($items[$book_id]);
+
+		$this->ci->session->set_userdata('cart_items', $items);
+
+		return $this->get_cart_items();
+	}
 
 }

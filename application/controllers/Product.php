@@ -17,6 +17,8 @@ class Product extends CI_Controller
 	{
 		$rs = array();
 
+		$this->load->view('components/header', array('title' => 'Product Page'));
+
 		if (!is_null($this->input->get('book_id'))) {
 
 			$book_id = $this->input->get('book_id');

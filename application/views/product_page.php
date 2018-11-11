@@ -1,23 +1,4 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: Thiloshon
- * Date: 05-Nov-18
- * Time: 9:50 PM
- */
-
-?>
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<!DOCTYPE html>
-<html>
-<body>
 <div class="container">
-
 	<div class="row">
 		<div class="col-xs-4 item-photo">
 			<img style="max-width:100%;"
@@ -125,38 +106,23 @@
 
 	<div class="row">
 		<div class="col-sm-12 ">
-
-
 			<div class="panel panel-primary panel-body">
-
 				<div class="panel-heading">
 					<p>Viewers also viewed...</p>
 				</div>
-
 				<?php foreach ($also_viewed as $book): ?>
-
 					<div class="col-sm-4">
-
 						<div class="panel-body">
 							<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
 								 style="width:100%" alt="Image">
 						</div>
-
 						<div class="panel-footer">
-							<a href="<?php echo "http://localhost/AdvancedServerCW/index.php/Product?book_id=" . $book['ID'] ?>"><?php echo $book['Title'] ?></a>
+							<a href="<?php echo base_url() . "Product?book_id=" . $book['ID'] ?>"><?php echo $book['Title'] ?></a>
 						</div>
-
 					</div>
-
 				<?php endforeach; ?>
-
 			</div>
-
-
 		</div>
-
 	</div>
 </div>
-</body>
-</html>
 

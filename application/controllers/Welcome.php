@@ -10,6 +10,7 @@ class Welcome extends CI_Controller {
 	{
 		$data['books'] = $this->Book_model->get_all_books_as_categories();
 
+		$this->load->view('components/header', array('title' => 'Welcome!'));
 		$this->load->view('home_page', $data);
 	}
 }

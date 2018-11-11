@@ -10,10 +10,12 @@ class Admin extends CI_Controller
 {
 	public function index()
 	{
-		if (!is_null($this->input->post('name'))) {
+		if (is_null($this->input->post('name'))) {
+			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 			$this->load->view('admin_login');
 
-		} else{
+		} else {
+			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 			$this->load->view('admin_category');
 		}
 	}
@@ -22,9 +24,10 @@ class Admin extends CI_Controller
 	public function new_category()
 	{
 		if (is_null($this->input->get('newCategory'))) {
+			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 			$this->load->view('admin_category');
 
-		} else{
+		} else {
 			$id = $this->input->get('newCategoryID');
 			$name = $this->input->get('newCategory');
 
@@ -42,8 +45,10 @@ class Admin extends CI_Controller
 			// For listing available categories to choose from
 			$data['categories'] = $this->Category_model->get_all_categories();
 
+			$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 			$this->load->view('admin_book', $data);
-		} else{
+
+		} else {
 
 			$title = $this->input->get('book_name');
 			$author = $this->input->get('author');
@@ -59,20 +64,31 @@ class Admin extends CI_Controller
 		}
 	}
 
-
-
 	public function search()
 	{
 		$searchKeyword = $this->input->get('keyword');
+		$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 
 		if ($searchKeyword == "" | is_null($searchKeyword)) {
 			$this->load->view('admin_search', array("results" => array()));
 
-		} else{
+		} else {
 			$rs['results'] = $this->Book_model->search_for_a_book($searchKeyword);
 
 			$this->load->view('admin_search', $rs);
 		}
+
+	}
+
+	public function view_book()
+	{
+		$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
+		$book_id = $this->input->get('book_id');
+
+		$rs['book_id'] = $book_id;
+
+		$this->load->view('admin_book_view', $rs);
+
 
 	}
 
