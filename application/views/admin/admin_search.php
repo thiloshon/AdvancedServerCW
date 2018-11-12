@@ -21,7 +21,7 @@
 							<?php echo $result->title ?>
 						</a>
 					</p>
-					<img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+					<img src="<?php echo base_url().$result->image_url ?>" class="img-circle" width="55" alt="Avatar">
 				</div>
 			</div>
 			<div class="col-sm-9">

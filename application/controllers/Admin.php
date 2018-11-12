@@ -93,11 +93,17 @@ class Admin extends CI_Controller
 
 	public function view_book()
 	{
-		$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
+
 		$book_id = $this->input->get('book_id');
 
-		$rs['book_id'] = $book_id;
+		$book = $this->Book_model->get_book_by_id($book_id);
+		$statistics = $this->user_statistics_library->get_visitors_over_time($book_id);
 
+		$rs['book_id'] = $book_id;
+		$rs['book'] = $book;
+		$rs['statistics'] = $statistics;
+
+		$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
 		$this->load->view('admin/admin_book_view', $rs);
 	}
 }
