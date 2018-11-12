@@ -1,10 +1,8 @@
 <?php
 
 /**
- * Created by IntelliJ IDEA.
- * User: Thiloshon
- * Date: 10-Nov-18
- * Time: 1:34 PM
+ * Library for managing 'also viewed by user' feature.
+ * This is also called collaborative filtering.
  */
 class Collaborative_filter_library
 {
@@ -13,7 +11,9 @@ class Collaborative_filter_library
 		$this->ci = &get_instance();
 	}
 
-
+	/**
+	 * Record a book view by a user.
+	 */
 	public function add_book_view($book_id)
 	{
 		if (!($this->ci->session->has_userdata('user_uid'))) {
@@ -27,6 +27,9 @@ class Collaborative_filter_library
 		$this->ci->Book_view_model->add_book_view($book_id, $user_id);
 	}
 
+	/**
+	 * Get the related books to the bookID given.
+	 */
 	public function get_related_books($book_id)
 	{
 		// Sub Query
@@ -37,7 +40,8 @@ class Collaborative_filter_library
 			->where('a.book_id', $book_id)
 			->where('c.book_id!=', $book_id)
 			->group_by("c.book_id")
-			->order_by('COUNT(*)', 'DESC');
+			->order_by('COUNT(*)', 'DESC')
+			->limit(6);
 		$subQuery = $this->ci->db->get_compiled_select();
 
 		// Main Query
@@ -47,6 +51,5 @@ class Collaborative_filter_library
 			->get();
 
 		return $also_viewed->custom_result_object('Book_model');
-
 	}
 }

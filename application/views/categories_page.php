@@ -47,8 +47,11 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="well">
-							<p>Just Forgot that I had to mention something about someone to someone about how I forgot
-								something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+							<p> A novel—inspired by the most celebrated regiment in the Red Army—about a woman’s sacrifice, courage, and love in a time of war.
+							<br/>
+
+								Russia, 1941. Katya Ivanova is a young pilot in a far-flung military academy in the Ural Mountains. From childhood, she’s dreamed of taking to the skies to escape her bleak mountain life. With the Nazis on the march across Europe, she is called on to use her wings to serve her country in its darkest hour. Not even the entreaties of her new husband—a sensitive artist who fears for her safety—can dissuade her from doing her part as a proud daughter of Russia.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -62,16 +65,9 @@
 						<?php echo $links; ?>
 					</div>
 				</div>
-
 			</div>
-
-
 			<br/>
 			<br/>
-
-
 		</div>
-
-
 	</div>
 </div>

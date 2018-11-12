@@ -2,16 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Created by IntelliJ IDEA.
- * User: Thiloshon
- * Date: 05-Nov-18
- * Time: 9:53 PM
+ * Class Books Controller responsible for a single book view.
  */
 class Books extends CI_Controller
 {
 
 	/**
-	 *
+	 * Base route.
 	 */
 	public function index()
 	{
@@ -23,13 +20,16 @@ class Books extends CI_Controller
 		} else {
 			$book = $this->Book_model->get_book_by_id($book_id);
 
+			// performing also viewed feature
 			$this->collaborative_filter_library->add_book_view($book_id);
 			$related_books = $this->collaborative_filter_library->get_related_books($book_id);
 
+			// setting data for view
 			$rs['book'] = $book;
 			$rs['also_viewed'] = $related_books;
 			$rs['success_message'] = "";
 
+			// form validation
 			$this->form_validation->set_rules('quantity', 'Quantity', 'required');
 
 			if ($this->form_validation->run()) {

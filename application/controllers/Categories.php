@@ -2,21 +2,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Created by IntelliJ IDEA.
- * User: Thiloshon
- * Date: 05-Nov-18
- * Time: 9:35 PM
+ * Class Categories Controller responsible for categories page.
  */
 class Categories extends CI_Controller
 {
 
 	/**
-	 *
+	 * Base route.
 	 */
 	public function index()
 	{
 		$category_id = $this->uri->segment(2, 'all');
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
+		// pagination setup
 		$config['base_url'] = 'http://localhost/AdvancedServerCW/Categories/' . $category_id;
 		$config['reuse_query_string'] = TRUE;
 		$config['total_rows'] = $this->Book_model->count_by_category($category_id);
@@ -24,7 +23,8 @@ class Categories extends CI_Controller
 
 		$this->pagination->initialize($config);
 
-		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+		// Populating data for view
 
 		$data['category'] = $category_id;
 		$data['categories'] = $this->Category_model->get_all_categories();

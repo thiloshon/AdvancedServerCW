@@ -2,26 +2,25 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Created by IntelliJ IDEA.
- * User: Thiloshon
- * Date: 05-Nov-18
- * Time: 9:46 PM
+ * Class Cart Controller responsible for a single book view.
  */
 class Cart extends CI_Controller
 {
 
 	/**
-	 *
+	 * Base route.
 	 */
 	public function index()
 	{
-
 		$data['cart_items'] = $this->cart_library->get_cart_items();
 
 		$this->load->view('components/header', array('title' => 'Your Cart'));
 		$this->load->view('shopping_cart', $data);
 	}
 
+	/**
+	 * Updating of cart.
+	 */
 	public function update_item()
 	{
 		$book_id = $this->input->get('book_id');
@@ -32,6 +31,9 @@ class Cart extends CI_Controller
 		redirect('/cart');
 	}
 
+	/**
+	 * Deleting cart item.
+	 */
 	public function delete_item()
 	{
 		$book_id = $this->input->get('item');

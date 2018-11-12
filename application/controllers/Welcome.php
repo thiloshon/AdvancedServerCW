@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class Welcome Controller responsible for a landing page of the site.
+ */
 class Welcome extends CI_Controller
 {
-
 	/**
-	 *
+	 * Base route.
 	 */
 	public function index()
 	{

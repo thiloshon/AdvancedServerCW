@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Created by IntelliJ IDEA.
- * User: Thiloshon
- * Date: 08-Nov-18
- * Time: 8:55 PM
+ * Class Admin Controller responsible for admin functionality.
  */
 class Admin extends CI_Controller
 {
+	/**
+	 * Base route.
+	 */
 	public function index()
 	{
 		if ($this->is_admin_logged_in()) {
@@ -19,11 +19,17 @@ class Admin extends CI_Controller
 		}
 	}
 
+	/**
+	 * Private function for checking if admin is logged in.
+	 */
 	private function is_admin_logged_in()
 	{
 		return isset($this->session->admin_logged_in) & ($this->session->admin_logged_in);
 	}
 
+	/**
+	 * For login of admin
+	 */
 	public function login()
 	{
 		$this->form_validation->set_rules('name', 'Admin ID', 'required');
@@ -49,6 +55,9 @@ class Admin extends CI_Controller
 
 	}
 
+	/**
+	 * For adding new category.
+	 */
 	public function new_category()
 	{
 		if ($this->is_admin_logged_in()) {
@@ -69,6 +78,9 @@ class Admin extends CI_Controller
 		}
 	}
 
+	/**
+	 * For adding new book.
+	 */
 	public function new_book()
 	{
 		if ($this->is_admin_logged_in()) {
@@ -91,6 +103,9 @@ class Admin extends CI_Controller
 		}
 	}
 
+	/**
+	 * For searching for a book.
+	 */
 	public function search()
 	{
 		if ($this->is_admin_logged_in()) {
@@ -110,6 +125,9 @@ class Admin extends CI_Controller
 		}
 	}
 
+	/**
+	 * For viewing a book and its statistics.
+	 */
 	public function view_book()
 	{
 		if ($this->is_admin_logged_in()) {
@@ -127,6 +145,5 @@ class Admin extends CI_Controller
 		} else {
 			redirect('/admin', 'refresh');
 		}
-
 	}
 }

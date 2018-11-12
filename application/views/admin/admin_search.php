@@ -5,7 +5,6 @@
 			<label for="keyword">Name of Title or Author</label>
 			<input type="text" class="form-control form-control-lg" id="keyword" name="keyword"
 				   aria-describedby="emailHelp" placeholder="Enter a keyword to search">
-
 		</div>
 
 		<button type="submit" class="btn btn-primary">Submit</button>
@@ -27,14 +26,12 @@
 			</div>
 			<div class="col-sm-9">
 				<div class="well">
-					<p>Just Forgot that I had to mention something about someone to someone about how I forgot
-						something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+					<p>Desription</p>
 				</div>
 			</div>
 		</div>
 
 		<hr/>
-
 
 	<?php endforeach; ?>
 

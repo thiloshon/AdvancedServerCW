@@ -1,6 +1,5 @@
 <?php
 
-
 if (sizeof($cart_items) == 0) {
 	?>
 	<style type="text/css">#cart_table {
@@ -47,7 +46,6 @@ if (sizeof($cart_items) == 0) {
 
 								<input type="hidden" name="book_id" value="<?php echo $cart_item['book_id'] ?>"/>
 
-
 								<td class="text-right">
 									<button class="btn btn-sm btn-success" type="submit"><i class="fa fa-refresh"></i>
 									</button>
@@ -91,7 +89,6 @@ if (sizeof($cart_items) == 0) {
 				</table>
 			</div>
 		</div>
-
 
 		<div class="col mb-2">
 			<div class="row" id="empty_cart">
