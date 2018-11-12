@@ -23,13 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<style>
-		body, html{
+		body, html {
 			font-family: 'Nunito Sans', sans-serif;
 		}
 	</style>
 
 </head>
-
 
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -46,18 +45,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a class="nav-link" href="<?php echo base_url() ?>">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo site_url('Categories/action')?>">Categories</a>
+					<a class="nav-link" href="<?php echo site_url('Categories/action') ?>">Categories</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo site_url('Cart')?>">Cart</a>
+					<a class="nav-link" href="<?php echo site_url('Cart') ?>">Cart</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo site_url('Admin')?>">Admin</a>
+					<a class="nav-link" href="<?php echo site_url('Admin') ?>">Admin</a>
 				</li>
 			</ul>
 
 			<form class="form-inline my-2 my-lg-0">
-				<a class="btn btn-success btn-sm ml-3" href="<?php echo site_url('Cart')?>">
+				<a class="btn btn-success btn-sm ml-3" href="<?php echo site_url('Cart') ?>">
 					<i class="fa fa-shopping-cart"></i> Cart
 					<span class="badge badge-light"><?php echo $this->cart_library->get_cart_count() ?></span>
 				</a>

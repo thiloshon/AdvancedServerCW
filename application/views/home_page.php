@@ -12,17 +12,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 ">
-			<?php $cat = 0; foreach ($books as $key => $category): if ($cat>2) break; ?>
+			<?php $cat = 0;
+			foreach ($books as $key => $category): if ($cat > 2) break; ?>
 				<div class="card">
 					<div class="card-header">
-						<?php echo $this->Category_model->get_category_name($key) ?> | <a href="<?php echo site_url(array('Categories', $key)) ?>">Browse More</a>
+						<?php echo $this->Category_model->get_category_name($key) ?> | <a
+							href="<?php echo site_url(array('Categories', $key)) ?>">Browse More</a>
 
 					</div>
 					<div class="card-body">
 						<div class="row">
 							<?php $val = 0; ?>
 							<?php foreach ($category as $book): ?>
-								<?php if ($val>3) break; ?>
+								<?php if ($val > 3) break; ?>
 								<div class="col-sm-3">
 									<div class="card">
 										<img class="card-img-top img-responsive"
@@ -41,11 +43,11 @@
 										</div>
 									</div>
 								</div>
-							<?php $val++; endforeach; ?>
+								<?php $val++; endforeach; ?>
 						</div>
 					</div>
 				</div>
-			<?php $cat++; endforeach; ?>
+				<?php $cat++; endforeach; ?>
 		</div>
 	</div>
 </div>

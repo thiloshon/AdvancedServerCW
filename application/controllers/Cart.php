@@ -7,19 +7,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Date: 05-Nov-18
  * Time: 9:46 PM
  */
-class Cart extends CI_Controller {
+class Cart extends CI_Controller
+{
 
-    /**
-     *
-     */
-    public function index()
-    {
+	/**
+	 *
+	 */
+	public function index()
+	{
 
-    	$data['cart_items'] = $this->cart_library->get_cart_items();
+		$data['cart_items'] = $this->cart_library->get_cart_items();
 
 		$this->load->view('components/header', array('title' => 'Your Cart'));
-        $this->load->view('shopping_cart', $data);
-    }
+		$this->load->view('shopping_cart', $data);
+	}
 
 	public function update_item()
 	{

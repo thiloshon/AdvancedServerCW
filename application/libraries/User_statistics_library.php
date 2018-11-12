@@ -13,7 +13,8 @@ class User_statistics_library
 		$this->ci = &get_instance();
 	}
 
-	public function get_visitors_over_time($book_id){
+	public function get_visitors_over_time($book_id)
+	{
 
 		$date_statistics = $this->ci->db->select('COUNT(*) as y')
 			->select('book_id')

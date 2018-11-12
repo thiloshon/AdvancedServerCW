@@ -55,7 +55,8 @@ class Cart_library
 		return $this->get_cart_items();
 	}
 
-	public function delete_cart_item($book_id)	{
+	public function delete_cart_item($book_id)
+	{
 		$items = $this->get_cart_items();
 
 		unset($items[$book_id]);
@@ -65,15 +66,17 @@ class Cart_library
 		return $this->get_cart_items();
 	}
 
-	public function get_cart_count(){
+	public function get_cart_count()
+	{
 		$this->initiate_cart();
 		return sizeof($this->ci->session->cart_items);
 	}
 
-	public function get_current_amount(){
+	public function get_current_amount()
+	{
 		$sum = 0;
-		foreach($this->get_cart_items() as $key=>$value){
-			if(isset($value['price']))
+		foreach ($this->get_cart_items() as $key => $value) {
+			if (isset($value['price']))
 				$sum += ($value['price'] * $value['qty']);
 		}
 		return $sum;

@@ -32,8 +32,7 @@ class Books extends CI_Controller
 
 			$this->form_validation->set_rules('quantity', 'Quantity', 'required');
 
-			if ($this->form_validation->run())
-			{
+			if ($this->form_validation->run()) {
 				$book_quantity = $this->input->post('quantity');
 				$this->cart_library->add_book_to_cart($book->isbn, $book_quantity, $book->title, $book->price, $book->image_url);
 

@@ -38,7 +38,7 @@ class Collaborative_filter_library
 			->where('c.book_id!=', $book_id)
 			->group_by("c.book_id")
 			->order_by('COUNT(*)', 'DESC');
-		$subQuery =  $this->ci->db->get_compiled_select();
+		$subQuery = $this->ci->db->get_compiled_select();
 
 		// Main Query
 		$also_viewed = $this->ci->db->select('*')

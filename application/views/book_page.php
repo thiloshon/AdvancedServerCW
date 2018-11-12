@@ -1,5 +1,3 @@
-
-
 <style>
 	.alert {
 		position: relative;
@@ -9,8 +7,8 @@
 		border-radius: .25rem;
 	}
 
-	.book_image{
-		max-width:100%;
+	.book_image {
+		max-width: 100%;
 	}
 </style>
 
@@ -25,7 +23,7 @@
 
 	<div class="row">
 		<div class="col-sm-4 item-photo">
-			<img class="img-responsive book_image" src="<?php echo base_url().$book->image_url ?>"/>
+			<img class="img-responsive book_image" src="<?php echo base_url() . $book->image_url ?>"/>
 		</div>
 		<div class="col-sm-8" style="border:0px solid gray">
 			<!-- Datos del vendedor y titulo del producto -->
@@ -33,7 +31,8 @@
 			<h5 style="color:#bfbfbf">written by <span style="color:#525252"><?php echo $book->author ?></span> ·
 				<small style="color:#337ab7">(<?php echo $book->copies_held ?> copies left)</small>
 			</h5>
-			<h5 style="color:#bfbfbf">in category <a href="<?php echo site_url(array('Categories', $book->category)) ?>"><?php echo $this->Category_model->get_category_name($book->category) ?></a>
+			<h5 style="color:#bfbfbf">in category <a
+					href="<?php echo site_url(array('Categories', $book->category)) ?>"><?php echo $this->Category_model->get_category_name($book->category) ?></a>
 
 				<!-- Precios -->
 				<h6 class="title-price">
@@ -62,25 +61,25 @@
 
 				<?php echo form_open() ?>
 
-					<input type="hidden" name="book_id" value="<?php echo $book->isbn ?>">
-					<div class="section" style="padding-bottom:20px;">
-						<h6 class="title-attr">
-							<small>Choose Qty</small>
-						</h6>
-						<div>
-							<input type="text" value="1" name="quantity"/>
-						</div>
+				<input type="hidden" name="book_id" value="<?php echo $book->isbn ?>">
+				<div class="section" style="padding-bottom:20px;">
+					<h6 class="title-attr">
+						<small>Choose Qty</small>
+					</h6>
+					<div>
+						<input type="text" value="1" name="quantity"/>
 					</div>
+				</div>
 
-					<!-- Botones de compra -->
-					<div class="section" style="padding-bottom:20px;">
+				<!-- Botones de compra -->
+				<div class="section" style="padding-bottom:20px;">
 
-						<button class="btn btn-success" type="submit">
+					<button class="btn btn-success" type="submit">
 
-							<span
-							<i class="fa fa-shopping-cart"> Add to Cart </i> </span>
-						</button>
-					</div>
+						<span
+						<i class="fa fa-shopping-cart"> Add to Cart </i> </span>
+					</button>
+				</div>
 
 				<?php echo form_close(); ?>
 		</div>
@@ -140,7 +139,7 @@
 					<div class="row">
 						<?php $val = 0; ?>
 						<?php foreach ($also_viewed as $book): ?>
-							<?php if ($val>4) break; ?>
+							<?php if ($val > 4) break; ?>
 							<div class="col-sm-3">
 								<div class="card">
 									<img class="card-img-top img-responsive"
@@ -155,7 +154,6 @@
 					</div>
 				</div>
 			</div>
-
 
 
 		</div>

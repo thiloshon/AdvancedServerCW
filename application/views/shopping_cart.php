@@ -3,15 +3,14 @@
 
 if (sizeof($cart_items) == 0) {
 	?>
-	<style type="text/css">#cart_table{
-			display:none;
+	<style type="text/css">#cart_table {
+			display: none;
 		}</style>
 	<?php
-}
-else {
+} else {
 	?>
-	<style type="text/css">#empty_cart{
-			display:none;
+	<style type="text/css">#empty_cart {
+			display: none;
 		}</style>
 	<?php
 }
@@ -37,13 +36,14 @@ else {
 					<?php foreach ($cart_items as $cart_item): ?>
 						<form action="<?php echo base_url(); ?>Cart/update_item">
 							<tr>
-								<td><img src="<?php echo base_url().$cart_item['url'] ?>" class="img-responsive" width="50px"/></td>
+								<td><img src="<?php echo base_url() . $cart_item['url'] ?>" class="img-responsive"
+										 width="50px"/></td>
 								<td><?php echo $cart_item['book_name'] ?></td>
 								<td>In stock</td>
 								<td><input class="form-control" type="text" name="new_qty"
 										   value="<?php echo $cart_item['qty'] ?>"/></td>
 
-								<td class="text-right"><?php echo $cart_item['price'] *  $cart_item['qty']?> $</td>
+								<td class="text-right"><?php echo $cart_item['price'] * $cart_item['qty'] ?> $</td>
 
 								<input type="hidden" name="book_id" value="<?php echo $cart_item['book_id'] ?>"/>
 
@@ -83,7 +83,8 @@ else {
 						<td></td>
 						<td></td>
 						<td><strong>Total</strong></td>
-						<td class="text-right"><strong><?php echo ($this->cart_library->get_current_amount() + 6.90);?> $</strong></td>
+						<td class="text-right"><strong><?php echo($this->cart_library->get_current_amount() + 6.90); ?>
+								$</strong></td>
 					</tr>
 
 					</tbody>
@@ -92,14 +93,15 @@ else {
 		</div>
 
 
-
 		<div class="col mb-2">
 			<div class="row" id="empty_cart">
 				<p class="text-centre">The cart is Empty! Please add items.</p>
 			</div>
 			<div class="row">
 				<div class="col-sm-12  col-md-6">
-					<a href="<?php echo site_url('Categories/action') ?>"><button class="btn btn-block btn-light" type="button" >Continue Shopping</button></a>
+					<a href="<?php echo site_url('Categories/action') ?>">
+						<button class="btn btn-block btn-light" type="button">Continue Shopping</button>
+					</a>
 
 				</div>
 				<div class="col-sm-12 col-md-6 text-right">

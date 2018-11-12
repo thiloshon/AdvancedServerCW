@@ -7,7 +7,7 @@
 		border: 1px solid #b3b3b3; /* Gray */
 		padding: 8px 16px;
 		text-decoration: none;
-		text-align: center!important;
+		text-align: center !important;
 	}
 
 	#pagination strong {
@@ -41,7 +41,8 @@
 							<h4><a href="<?php echo site_url(array('Books', $book->isbn)) ?>"><?php echo $book->title ?>
 								</a>
 							</h4>
-							<img src="<?php echo base_url().$book->image_url ?>" class="img-responsive" height="50%" width="50%" alt="Avatar">
+							<img src="<?php echo base_url() . $book->image_url ?>" class="img-responsive" height="50%"
+								 width="50%" alt="Avatar">
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -57,7 +58,7 @@
 
 			<div class="row">
 				<div class="col-sm-12 text-center">
-					<div id="pagination" >
+					<div id="pagination">
 						<?php echo $links; ?>
 					</div>
 				</div>
@@ -65,13 +66,11 @@
 			</div>
 
 
-
 			<br/>
 			<br/>
 
 
 		</div>
-
 
 
 	</div>

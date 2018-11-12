@@ -7,14 +7,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Date: 05-Nov-18
  * Time: 9:35 PM
  */
-class Categories extends CI_Controller {
+class Categories extends CI_Controller
+{
 
-    /**
-     *
-     */
-    public function index()
-    {
-    	$category_id = $this->uri->segment(2, 'all');
+	/**
+	 *
+	 */
+	public function index()
+	{
+		$category_id = $this->uri->segment(2, 'all');
 
 		$config['base_url'] = 'http://localhost/AdvancedServerCW/Categories/' . $category_id;
 		$config['reuse_query_string'] = TRUE;
@@ -32,5 +33,5 @@ class Categories extends CI_Controller {
 
 		$this->load->view('components/header', array('title' => 'Categories'));
 		$this->load->view('categories_page', $data);
-    }
+	}
 }

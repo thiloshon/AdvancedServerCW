@@ -71,7 +71,8 @@ class Book_model extends CI_Model
 		return $res->custom_result_object('Book_model');
 	}
 
-	public function count_by_category($category_id) {
+	public function count_by_category($category_id)
+	{
 		$this->db->where('category', $category_id);
 		$this->db->from("library_books");
 

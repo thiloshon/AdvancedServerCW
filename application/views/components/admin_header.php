@@ -23,11 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 	<style>
-		p{
+		p {
 			margin-top: 10px;
 		}
 	</style>
-
 
 
 </head>
@@ -37,8 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (!isset($this->session->admin_logged_in) & !($this->session->admin_logged_in)) {
 	?>
-	<style type="text/css">#admin_nav{
-			display:none;
+	<style type="text/css">#admin_nav {
+			display: none;
 		}</style>
 	<?php
 }

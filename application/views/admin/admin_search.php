@@ -3,7 +3,8 @@
 	<form action="">
 		<div class="form-group">
 			<label for="keyword">Name of Title or Author</label>
-			<input type="text" class="form-control form-control-lg" id="keyword" name="keyword" aria-describedby="emailHelp" placeholder="Enter a keyword to search">
+			<input type="text" class="form-control form-control-lg" id="keyword" name="keyword"
+				   aria-describedby="emailHelp" placeholder="Enter a keyword to search">
 
 		</div>
 
@@ -21,7 +22,7 @@
 							<?php echo $result->title ?>
 						</a>
 					</p>
-					<img src="<?php echo base_url().$result->image_url ?>" class="img-circle" width="55" alt="Avatar">
+					<img src="<?php echo base_url() . $result->image_url ?>" class="img-circle" width="55" alt="Avatar">
 				</div>
 			</div>
 			<div class="col-sm-9">

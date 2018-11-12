@@ -26,7 +26,8 @@ class Category_model extends CI_Model
 		return $categories->custom_result_object('Category_model');
 	}
 
-	public function get_category_name($id){
+	public function get_category_name($id)
+	{
 		$this->db->where('category_id', $id);
 		$res = $this->db->get('book_categories');
 

@@ -1,11 +1,11 @@
-body, html{
+body, html {
 	height: 100%;
 	background-repeat: no-repeat;
 	background-color: #d3d3d3;
 	font-family: 'Nunito Sans', sans-serif;
 }
 
-.main{
+.main {
 	margin-top: 70px;
 }
 
@@ -15,16 +15,16 @@ h1.title {
 	font-weight: 400;
 }
 
-hr{
+hr {
 	width: 10%;
 	color: #fff;
 }
 
-.form-group{
+.form-group {
 	margin-bottom: 15px;
 }
 
-label{
+label {
 	margin-bottom: 15px;
 }
 
@@ -34,7 +34,7 @@ input::-webkit-input-placeholder {
 	padding-top: 3px;
 }
 
-.main-login{
+.main-login {
 	background-color: #fff;
 	/* shadows and rounded borders */
 	-moz-border-radius: 2px;
@@ -46,17 +46,17 @@ input::-webkit-input-placeholder {
 
 }
 
-.main-center{
+.main-center {
 	margin: 0 auto;
 	padding: 40px 40px;
 
 }
 
-.login-button{
+.login-button {
 	margin-top: 5px;
 }
 
-.login-register{
+.login-register {
 	font-size: 11px;
 	text-align: center;
 }
