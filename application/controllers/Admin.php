@@ -61,18 +61,10 @@ class Admin extends CI_Controller
 			$this->load->view('admin/admin_book', $data);
 
 		} else {
+			$data = $this->input->post(array('book_name', 'author', 'publisher', 'category', 'price', 'isbn', 'copies'));
+			call_user_func_array(array($this->Book_model, "add_a_new_book"), $data);
 
-			$title = $this->input->get('book_name');
-			$author = $this->input->get('author');
-			$publisher = $this->input->get('publisher');
-			$category = $this->input->get('category');
-			$price = $this->input->get('price');
-			$isbn = $this->input->get('isbn');
-			$copies_held = $this->input->get('copies');
-
-			$this->Book_model->add_a_new_book($title, $author, $publisher, $category, $price, $isbn, $copies_held);
-
-			redirect('/admin/book', 'refresh');
+			redirect('/Admin/new_book', 'refresh');
 		}
 	}
 

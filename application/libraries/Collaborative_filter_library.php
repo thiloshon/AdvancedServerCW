@@ -29,15 +29,22 @@ class Collaborative_filter_library
 
 	public function get_related_books($book_id)
 	{
+		// Sub Query
+		$this->ci->db->select('c.book_id')
+			->from('book_views a')
+			->join('book_views b', 'a.book_id=b.book_id')
+			->join('book_views c', 'b.user_id=c.user_id')
+			->where('a.book_id', $book_id)
+			->where('c.book_id!=', $book_id)
+			->group_by("c.book_id")
+			->order_by('COUNT(*)', 'DESC');
+		$subQuery =  $this->ci->db->get_compiled_select();
 
-		$query = 'SELECT * FROM library_books WHERE isbn IN (SELECT c.book_id 
-FROM `book_views` a
-JOIN `book_views` b ON a.book_id=b.book_id
-JOIN `book_views` c ON b.user_id=c.user_id
-WHERE a.`book_id`=' . $book_id . ' AND c.book_id!=' . $book_id . ' GROUP BY c.book_id
-ORDER BY COUNT(*) DESC)';
-
-		$also_viewed = $this->ci->db->query($query);
+		// Main Query
+		$also_viewed = $this->ci->db->select('*')
+			->from('library_books')
+			->where("isbn IN ($subQuery)", NULL, FALSE)
+			->get();
 
 		return $also_viewed->custom_result_object('Book_model');
 

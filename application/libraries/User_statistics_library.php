@@ -15,9 +15,15 @@ class User_statistics_library
 
 	public function get_visitors_over_time($book_id){
 
-		$query = 'SELECT COUNT(*) as y, book_id, date(date) as label FROM book_views where book_id=' . $book_id . ' GROUP BY date(date), book_id;';
+		$date_statistics = $this->ci->db->select('COUNT(*) as y')
+			->select('book_id')
+			->select('date(date) as label')
+			->from('book_views')
+			->where('book_id', $book_id)
+			->group_by("date(date)")
+			->group_by('book_id')
+			->get();
 
-		$date_statistics = $this->ci->db->query($query);
 
 		return $date_statistics->result();
 

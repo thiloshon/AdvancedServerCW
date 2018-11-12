@@ -1,5 +1,5 @@
 <div class="col-sm-6">
-	<form action="">
+	<form action="<?php echo site_url('Admin/new_book') ?>" method="post">
 		<div class="form-group">
 			<h4>Add A New Book</h4>
 
