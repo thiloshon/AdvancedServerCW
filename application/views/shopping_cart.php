@@ -101,9 +101,11 @@ if (sizeof($cart_items) == 0) {
 					</a>
 
 				</div>
-				<div class="col-sm-12 col-md-6 text-right">
-					<button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
-				</div>
+				<?php if (sizeof($cart_items) != 0)
+					echo "<div class=\"col-sm-12 col-md-6 text-right\">
+					<button class=\"btn btn-lg btn-block btn-success text-uppercase\">Checkout</button>
+				</div>" ?>
+
 			</div>
 		</div>
 	</div>

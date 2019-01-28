@@ -32,12 +32,15 @@ class Collaborative_filter_library
 	 */
 	public function get_related_books($book_id)
 	{
+
+		$user_id = $this->ci->session->userdata('user_uid');
 		// Sub Query
 		$this->ci->db->select('c.book_id')
 			->from('book_views a')
 			->join('book_views b', 'a.book_id=b.book_id')
 			->join('book_views c', 'b.user_id=c.user_id')
 			->where('a.book_id', $book_id)
+			->where('a.user_id!=', $user_id)
 			->where('c.book_id!=', $book_id)
 			->group_by("c.book_id")
 			->order_by('COUNT(*)', 'DESC')
@@ -46,10 +49,11 @@ class Collaborative_filter_library
 
 		// Main Query
 		$also_viewed = $this->ci->db->select('*')
-			->from('library_books')
-			->where("isbn IN ($subQuery)", NULL, FALSE)
+			->from('library_books AS table1')
+			->join("($subQuery) AS table2", 'table1.isbn = table2.book_id', 'inner')
 			->get();
 
 		return $also_viewed->custom_result_object('Book_model');
+
 	}
 }

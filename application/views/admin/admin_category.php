@@ -1,6 +1,6 @@
 <div class="col-sm-6">
 	<h4>Add A New Category</h4>
-	<form action="">
+	<form action="<?php echo base_url()?>Admin/new_category">
 		<div class="form-group">
 			<label for="newCategory">Name For New Category</label>
 			<input type="text" class="form-control form-control-lg" id="newCategory" name="newCategory"

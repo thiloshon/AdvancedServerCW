@@ -50,9 +50,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo site_url('Cart') ?>">Cart</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo site_url('Admin') ?>">Admin</a>
-				</li>
 			</ul>
 
 			<form class="form-inline my-2 my-lg-0">

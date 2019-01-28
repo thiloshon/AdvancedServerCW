@@ -60,6 +60,7 @@ class Admin extends CI_Controller
 	 */
 	public function new_category()
 	{
+
 		if ($this->is_admin_logged_in()) {
 			if (is_null($this->input->get('newCategory'))) {
 				$this->load->view('components/admin_header', array('title' => 'Admin Portal'));
@@ -71,7 +72,9 @@ class Admin extends CI_Controller
 
 				$this->Category_model->add_a_new_category($id, $name);
 
-				redirect('/admin/category', 'refresh');
+				$base = base_url() . 'admin';
+				echo "<p> Added category: $name. <a href=$base>Go back.</a>";
+
 			}
 		} else {
 			redirect('/admin', 'refresh');
@@ -84,7 +87,7 @@ class Admin extends CI_Controller
 	public function new_book()
 	{
 		if ($this->is_admin_logged_in()) {
-			if (is_null($this->input->get('book_name'))) {
+			if (is_null($this->input->post('book_name'))) {
 
 				// For listing available categories to choose from
 				$data['categories'] = $this->Category_model->get_all_categories();
@@ -96,7 +99,10 @@ class Admin extends CI_Controller
 				$data = $this->input->post(array('book_name', 'author', 'publisher', 'category', 'price', 'isbn', 'copies'));
 				call_user_func_array(array($this->Book_model, "add_a_new_book"), $data);
 
-				redirect('/Admin/new_book', 'refresh');
+				$base = base_url() . 'admin/new_book';
+
+				echo "<p> Added Book. <a href=$base>Go back.</a>";
+
 			}
 		} else {
 			redirect('/admin', 'refresh');
